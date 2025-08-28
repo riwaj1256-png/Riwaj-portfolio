@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Full Stack Development involves building both front-end (HTML, CSS, JavaScript, Bootstrap) and back-end (PHP, MySQL) components for scalable, user-friendly web applications."/>
+    <meta name="Keywords" content="Full Stack Development, HTML, CSS, JavaScript, Bootstrap, PHP, MySQL, Web Application Development, Client-Server Architecture">
+    <meta name="author" content="Riwaj Pathak">
+    <meta name="copyright" content="Copyright © 2025" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    
+    <!-- favicon for portfolio -->
+    <link rel="shortcut icon" href="assests/images/favicon.png" type="image/x-icon">
+    
+    <title>What is Full Stack? - Portfolio</title>
+    
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #141414;
+        --bg-card: #1a1a1a;
+        --accent-primary: #6366f1;
+        --accent-secondary: #8b5cf6;
+        --accent-tertiary: #ec4899;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        --gradient-secondary: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-tertiary) 100%);
+        --gradient-bg: linear-gradient(to bottom, #0f0f1a, #0a0a14);
+        --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        --glass-bg: rgba(30, 30, 50, 0.5);
+        --glass-border: rgba(255, 255, 255, 0.1);
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--gradient-bg);
+        color: var(--text-primary);
+        padding-top: 80px;
+        overflow-x: hidden;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+      }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent-primary);
+        border-radius: 10px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-secondary);
+      }
+      
+      /* Navbar */
+      .navbar {
+        background: rgba(10, 10, 10, 0.8) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--glass-border);
+        padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+      
+      .navbar-brand {
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .nav-link {
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 1rem !important;
+        margin: 0 0.2rem;
+        color: var(--text-secondary) !important;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-link:hover, .nav-link.active {
+        color: var(--text-primary) !important;
+      }
+      
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background: var(--gradient-primary);
+        transition: all 0.3s ease;
+      }
+      
+      .nav-link:hover::after, .nav-link.active::after {
+        width: 70%;
+        left: 15%;
+      }
+      
+      .btn-primary {
+        background: var(--gradient-primary);
+        border: none;
+        border-radius: 8px;
+        padding: 0.8rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+      
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-secondary);
+        transition: all 0.4s ease;
+        z-index: -1;
+      }
+      
+      .btn-primary:hover::before {
+        left: 0;
+      }
+      
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+      }
+      
+      .btn-outline-light {
+        border: 2px solid var(--glass-border);
+        border-radius: 8px;
+        padding: 0.8rem 2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        background: transparent;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-outline-light:hover {
+        background: var(--glass-bg);
+        border-color: var(--accent-primary);
+        transform: translateY(-3px);
+      }
+      
+      /* Title Section */
+      .title-section {
+        background: var(--gradient-bg);
+        padding: 5rem 0 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .title-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+        animation: pulse 15s infinite alternate;
+      }
+      
+      .title-section::after {
+        content: '';
+        position: absolute;
+        bottom: -50%;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+        animation: pulse 15s infinite alternate-reverse;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1.2);
+          opacity: 0.8;
+        }
+      }
+      
+      /* Content Section */
+      .content-section {
+        background: var(--bg-card);
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--glass-border);
+        margin: 5rem 0;
+      }
+      
+      .section-title {
+        position: relative;
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+      
+      .section-title::after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 4px;
+        background: var(--gradient-primary);
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+      }
+      
+      .tech-card {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .tech-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        border-color: var(--accent-primary);
+      }
+      
+      .tech-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-primary);
+        opacity: 0.1;
+        transition: all 0.4s ease;
+      }
+      
+      .tech-card:hover::before {
+        left: 0;
+      }
+      
+      .tech-icon {
+        font-size: 2.5rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      /* Code Snippet */
+      .code-snippet {
+        background: var(--bg-secondary);
+        border-radius: 8px;
+        padding: 1.5rem;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        position: relative;
+        border: 1px solid var(--glass-border);
+      }
+      
+      .code-snippet::before {
+        content: attr(data-lang);
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        background: var(--gradient-primary);
+        color: white;
+        padding: 0.2rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      
+      /* Project Cards */
+      .project-card {
+        background: var(--bg-card);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: all 0.4s ease;
+        border: 1px solid var(--glass-border);
+      }
+      
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        border-color: rgba(99, 102, 241, 0.3);
+      }
+      
+      .project-img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+      }
+      
+      /* Resource Links */
+      .resource-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      
+      .resource-link:hover {
+        color: var(--text-primary);
+        transform: translateX(5px);
+      }
+      
+      /* Newsletter Form */
+      .newsletter-input {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary);
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px 0 0 8px;
+        border-right: none;
+      }
+      
+      .newsletter-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+      }
+      
+      .newsletter-btn {
+        border-radius: 0 8px 8px 0;
+      }
+      
+      /* Footer */
+      footer {
+        background: var(--bg-secondary);
+        color: var(--text-secondary);
+        padding: 5rem 0 2rem;
+        margin-top: 6rem;
+        position: relative;
+      }
+      
+      footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--gradient-primary);
+      }
+      
+      .social-icon {
+        font-size: 1.2rem;
+        color: var(--text-primary);
+        background: var(--bg-card);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.5rem 0.5rem 0;
+        transition: all 0.3s ease;
+      }
+      
+      .social-icon:hover {
+        background: var(--gradient-primary);
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+      }
+      
+      .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: block;
+        margin-bottom: 0.8rem;
+      }
+      
+      .footer-links a:hover {
+        color: var(--text-primary);
+        transform: translateX(5px);
+      }
+      
+      /* Back to top button */
+      .top-move {
+        position: fixed;
+        right: 30px;
+        z-index: 100;
+        text-align: center;
+        bottom: 30px;
+        background: var(--gradient-primary);
+        padding: 5px;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+      }
+      
+      .top-move.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .top-move:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.6);
+      }
+      
+      .top-move a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.5rem;
+      }
+      
+      /* Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .fade-in {
+        animation: fadeIn 1s ease forwards;
+      }
+      
+      .delay-1 { animation-delay: 0.2s; }
+      .delay-2 { animation-delay: 0.4s; }
+      .delay-3 { animation-delay: 0.6s; }
+      .delay-4 { animation-delay: 0.8s; }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .title-section {
+          padding: 3rem 0;
+        }
+        
+        .display-4 {
+          font-size: 2.5rem;
+        }
+        
+        .content-section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar start -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark text-light">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+          <img src="assests/images/logo.webp" alt="" width="50" height="50" class="d-inline-block align-text-top rounded-3 me-2">
+          e-portfolio
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="fullstack.html">What is full stack?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="html.html">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="css.html">CSS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="js.html">Javascript</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bs.html">Bootstrap</a>
+            </li>
+          </ul>
+          <form class="d-flex ms-3">
+            <a class="btn btn-outline-light me-2" href="#">Log in</a>
+            <a class="btn btn-primary" href="#">Register</a>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- navbar end -->
+
+    <!-- title start -->
+    <div class="container-fluid title-section text-light">
+      <h1 class="display-4 fw-bold text-center fade-in">What is Full Stack?</h1>
+      <p class="text-center text-secondary fade-in delay-1">
+        Building end-to-end web applications with front-end and back-end expertise
+      </p>
+    </div>
+    <!-- title end -->
+
+    <!-- understanding full stack section -->
+    <div class="container content-section fade-in delay-1">
+      <h2 class="section-title">Understanding Full Stack Development</h2>
+      <p class="text-secondary mb-4">
+        Full Stack Development involves working on both the front-end and back-end components of a web application. A full stack developer is a versatile professional who can handle the user interface, server-side logic, database management, and everything in between to create fully functional, scalable, and user-friendly applications.
+      </p>
+      <p class="text-secondary mb-4">
+        By mastering both client-side and server-side technologies, full stack developers can build complete web solutions, from designing visually appealing interfaces to managing data and ensuring robust functionality.
+      </p>
+    </div>
+    <!-- understanding full stack section end -->
+
+    <!-- full stack architecture section -->
+    <section class="content-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Full Stack Architecture</h2>
+        <p class="text-secondary mb-4 fade-in delay-1">
+          Full stack development follows a client-server architecture, where the front-end (client) interacts with users, the back-end (server) handles logic and data processing, and databases store and manage data.
+        </p>
+        <div class="row g-4">
+          <div class="col-md-4 fade-in delay-2">
+            <div class="tech-card text-center">
+              <i class="fas fa-desktop tech-icon mb-3"></i>
+              <h5 class="mb-3">Client-Side (Front-End)</h5>
+              <p class="text-secondary">
+                The front-end includes HTML, CSS, and JavaScript, creating the user interface and interactivity using frameworks like Bootstrap.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 fade-in delay-3">
+            <div class="tech-card text-center">
+              <i class="fas fa-server tech-icon mb-3"></i>
+              <h5 class="mb-3">Server-Side (Back-End)</h5>
+              <p class="text-secondary">
+                The back-end uses languages like PHP to process requests, manage logic, and communicate with databases.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 fade-in delay-4">
+            <div class="tech-card text-center">
+              <i class="fas fa-database tech-icon mb-3"></i>
+              <h5 class="mb-3">Database</h5>
+              <p class="text-secondary">
+                Databases like MySQL store and retrieve data, ensuring efficient management and scalability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- full stack architecture section end -->
+
+    <!-- front-end section -->
+    <section class="content-section">
+      <div class="container">
+        <h3 class="section-title fade-in">Front-End Development</h3>
+        <p class="text-secondary mb-4 fade-in delay-1">
+          The front end is the user-facing part of a web application, responsible for the design, layout, and interactivity of the website. It focuses on creating an engaging and intuitive user experience.
+        </p>
+        <div class="row g-4 mb-5">
+          <div class="col-md-4 fade-in delay-2">
+            <div class="tech-card text-center">
+              <i class="fab fa-html5 tech-icon mb-3"></i>
+              <h5 class="mb-3">HTML</h5>
+              <p class="text-secondary">
+                HTML (HyperText Markup Language) structures content on the web, defining elements like headings, paragraphs, and images.
+              </p>
+              <a href="html.html" class="btn btn-outline-light btn-sm">Learn More</a>
+            </div>
+          </div>
+          <div class="col-md-4 fade-in delay-3">
+            <div class="tech-card text-center">
+              <i class="fab fa-css3-alt tech-icon mb-3"></i>
+              <h5 class="mb-3">CSS</h5>
+              <p class="text-secondary">
+                CSS (Cascading Style Sheets) styles the visual presentation, enabling responsive designs with layouts like Flexbox and Grid.
+              </p>
+              <a href="css.html" class="btn btn-outline-light btn-sm">Learn More</a>
+            </div>
+          </div>
+          <div class="col-md-4 fade-in delay-4">
+            <div class="tech-card text-center">
+              <i class="fab fa-js tech-icon mb-3"></i>
+              <h5 class="mb-3">JavaScript</h5>
+              <p class="text-secondary">
+                JavaScript adds interactivity, enabling dynamic content, animations, and user interactions on web pages.
+              </p>
+              <a href="js.html" class="btn btn-outline-light btn-sm">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- front-end section end -->
+
+    <!-- back-end section -->
+    <section class="content-section">
+      <div class="container">
+        <h3 class="section-title fade-in">Back-End Development</h3>
+        <p class="text-secondary mb-4 fade-in delay-1">
+          The back end handles the server-side logic, database management, and application functionality, ensuring data is processed and delivered to the front end seamlessly.
+        </p>
+        <div class="row g-4 mb-5">
+          <div class="col-md-6 fade-in delay-2">
+            <div class="tech-card text-center">
+              <i class="fas fa-server tech-icon mb-3"></i>
+              <h5 class="mb-3">PHP</h5>
+              <p class="text-secondary">
+                PHP is a server-side scripting language used for dynamic web content, form handling, and database interactions.
+              </p>
+              <a href="#" class="btn btn-outline-light btn-sm">Learn More</a>
+            </div>
+          </div>
+          <div class="col-md-6 fade-in delay-3">
+            <div class="tech-card text-center">
+              <i class="fas fa-database tech-icon mb-3"></i>
+              <h5 class="mb-3">MySQL</h5>
+              <p class="text-secondary">
+                MySQL is a relational database management system used to store, retrieve, and manage application data efficiently.
+              </p>
+              <a href="#" class="btn btn-outline-light btn-sm">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- back-end section end -->
+
+    <!-- code snippets section -->
+    <section class="content-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Full Stack Code Examples</h2>
+        <div class="row g-4">
+          <div class="col-md-6 fade-in delay-1">
+            <div class="code-snippet" data-lang="HTML/CSS">
+              &lt;!-- HTML --&gt;
+              &lt;div class="card"&gt;
+                &lt;h2&gt;User Profile&lt;/h2&gt;
+                &lt;p&gt;Name: &lt;span id="user-name"&gt;&lt;/span&gt;&lt;/p&gt;
+                &lt;button onclick="fetchUser()"&gt;Load User&lt;/button&gt;
+              &lt;/div&gt;
+
+              &lt;style&gt;
+              .card {
+                background: #1a1a1a;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+              }
+              &lt;/style&gt;
+            </div>
+            <div class="mt-3">
+              <div class="card" style="background: #1a1a1a; padding: 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);">
+                <h2 style="font-size: 1.5rem;">User Profile</h2>
+                <p style="color: var(--text-secondary);">Name: <span id="user-name">John Doe</span></p>
+                <button class="btn btn-primary" onclick="alert('Simulated user fetch!')">Load User</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 fade-in delay-2">
+            <div class="code-snippet" data-lang="PHP/MySQL">
+              &lt;?php
+              $conn = new mysqli("localhost", "username", "password", "database");
+              if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+              }
+              $sql = "SELECT name FROM users WHERE id = 1";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+                  $row = $result->fetch_assoc();
+                  echo $row["name"];
+              }
+              $conn->close();
+              ?&gt;
+            </div>
+            <div class="mt-3 text-center">
+              <p style="color: var(--text-secondary);">Output: <span style="font-weight: 600;">John Doe</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- code snippets section end -->
+
+    <!-- full stack projects section -->
+    <section class="content-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Full Stack Projects</h2>
+        <p class="text-center mb-5 text-secondary fade-in">Examples of end-to-end web applications</p>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 fade-in delay-1">
+            <div class="project-card">
+              <img src="https://placehold.co/400x250/6366f1/ffffff?text=E-Commerce" class="project-img" alt="E-Commerce Platform">
+              <div class="card-body p-4">
+                <h5 class="card-title mb-3">E-Commerce Platform</h5>
+                <p class="card-text text-secondary">A fully functional online store with product listings, cart, and user authentication using HTML, CSS, JavaScript, PHP, and MySQL.</p>
+                <div class="mt-3">
+                  <span class="badge bg-dark me-1">HTML</span>
+                  <span class="badge bg-dark me-1">CSS</span>
+                  <span class="badge bg-dark me-1">JavaScript</span>
+                  <span class="badge bg-dark">PHP</span>
+                  <span class="badge bg-dark">MySQL</span>
+                </div>
+              </div>
+              <div class="card-footer bg-transparent border-top border-glass p-4">
+                <a href="#" class="btn btn-sm btn-outline-light w-100">View Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 fade-in delay-2">
+            <div class="project-card">
+              <img src="https://placehold.co/400x250/8b5cf6/ffffff?text=Blog+Platform" class="project-img" alt="Blog Platform">
+              <div class="card-body p-4">
+                <h5 class="card-title mb-3">Blog Platform</h5>
+                <p class="card-text text-secondary">A dynamic blog with post creation, editing, and comments, built with Bootstrap, PHP, and MySQL.</p>
+                <div class="mt-3">
+                  <span class="badge bg-dark me-1">Bootstrap</span>
+                  <span class="badge bg-dark me-1">PHP</span>
+                  <span class="badge bg-dark">MySQL</span>
+                </div>
+              </div>
+              <div class="card-footer bg-transparent border-top border-glass p-4">
+                <a href="#" class="btn btn-sm btn-outline-light w-100">View Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 fade-in delay-3">
+            <div class="project-card">
+              <img src="https://placehold.co/400x250/ec4899/ffffff?text=Task+Manager" class="project-img" alt="Task Manager App">
+              <div class="card-body p-4">
+                <h5 class="card-title mb-3">Task Manager App</h5>
+                <p class="card-text text-secondary">A task management app with CRUD operations, using HTML, CSS, JavaScript, and a PHP/MySQL backend.</p>
+                <div class="mt-3">
+                  <span class="badge bg-dark me-1">HTML</span>
+                  <span class="badge bg-dark me-1">CSS</span>
+                  <span class="badge bg-dark me-1">JavaScript</span>
+                  <span class="badge bg-dark">PHP</span>
+                  <span class="badge bg-dark">MySQL</span>
+                </div>
+              </div>
+              <div class="card-footer bg-transparent border-top border-glass p-4">
+                <a href="#" class="btn btn-sm btn-outline-light w-100">View Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- full stack projects section end -->
+
+    <!-- resources section -->
+    <section class="content-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Full Stack Learning Resources</h2>
+        <p class="text-center mb-5 text-secondary fade-in">Explore these resources to master full stack development</p>
+        <div class="row g-4">
+          <div class="col-md-6 fade-in delay-1">
+            <div class="tech-card">
+              <h3 class="h4">freeCodeCamp</h3>
+              <p class="text-secondary">Hands-on tutorials and projects for learning full stack development with HTML, CSS, JavaScript, and back-end technologies.</p>
+              <a href="https://www.freecodecamp.org/learn" class="resource-link">Visit freeCodeCamp</a>
+            </div>
+          </div>
+          <div class="col-md-6 fade-in delay-2">
+            <div class="tech-card">
+              <h3 class="h4">The Odin Project</h3>
+              <p class="text-secondary">A comprehensive curriculum for full stack development, covering front-end and back-end skills.</p>
+              <a href="https://www.theodinproject.com" class="resource-link">Visit The Odin Project</a>
+            </div>
+          </div>
+          <div class="col-md-6 fade-in delay-3">
+            <div class="tech-card">
+              <h3 class="h4">MDN Web Docs</h3>
+              <p class="text-secondary">Detailed documentation on front-end and back-end technologies, including HTML, CSS, and JavaScript.</p>
+              <a href="https://developer.mozilla.org" class="resource-link">Visit MDN</a>
+            </div>
+          </div>
+          <div class="col-md-6 fade-in delay-4">
+            <div class="tech-card">
+              <h3 class="h4">W3Schools</h3>
+              <p class="text-secondary">Interactive tutorials for HTML, CSS, JavaScript, PHP, and MySQL to build full stack applications.</p>
+              <a href="https://www.w3schools.com" class="resource-link">Visit W3Schools</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- resources section end -->
+
+    <!-- benefits section -->
+    <section class="content-section">
+      <div class="container">
+        <h3 class="section-title fade-in">Why Full Stack Development?</h3>
+        <p class="text-secondary mb-4 fade-in delay-1">
+          Full stack developers are in high demand due to their ability to work across all layers of a web application. Here are some key benefits:
+        </p>
+        <ul class="text-secondary mb-4 fade-in delay-2">
+          <li><i class="fas fa-check-circle me-2 text-accent-primary"></i> Versatility to handle both front-end and back-end tasks.</li>
+          <li><i class="fas fa-check-circle me-2 text-accent-primary"></i> Faster development by reducing dependency on multiple specialists.</li>
+          <li><i class="fas fa-check-circle me-2 text-accent-primary"></i> Cost-effective for startups and small businesses.</li>
+          <li><i class="fas fa-check-circle me-2 text-accent-primary"></i> Holistic understanding of the entire development process.</li>
+        </ul>
+        <div class="text-center fade-in delay-3">
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+    <!-- benefits section end -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h5 class="text-uppercase mb-4">e-portfolio</h5>
+            <p class="text-secondary">Creating beautiful, functional websites and web applications with modern technologies and best practices.</p>
+            <div class="mt-4">
+              <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://wa.me/9779767218200" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Quick Links</h5>
+            <ul class="list-unstyled footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="fullstack.html">What is full stack?</a></li>
+              <li><a href="html.html">HTML</a></li>
+              <li><a href="css.html">CSS</a></li>
+              <li><a href="js.html">Javascript</a></li>
+              <li><a href="bs.html">Bootstrap</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Contact Info</h5>
+            <ul class="list-unstyled">
+              <li class="mb-3"><i class="fas fa-envelope me-2 text-accent-primary"></i> contactRiwaj1256@gmail.com</li>
+              <li class="mb-3"><i class="fas fa-phone me-2 text-accent-primary"></i> +977 9767218200</li>
+              <li class="mb-3"><i class="fas fa-map-marker-alt me-2 text-accent-primary"></i> Kathmandu, Nepal</li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <h5 class="text-uppercase mb-4">Newsletter</h5>
+            <p class="text-secondary">Subscribe to my newsletter for the latest updates and tips.</p>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control newsletter-input" placeholder="Your Email" aria-label="Your Email">
+              <button class="btn btn-primary newsletter-btn" type="button">Subscribe</button>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="my-5 border-glass">
+        
+        <div class="text-center py-3">
+          <p class="mb-0 text-secondary">© 2025 Riwaj Pathak. All rights reserved.</p>
+        </div>
+        <div class="text-center py-3">
+          <p class="mb-0 text-secondary">Powered By: <a href="#" class="text-gradient">Riwaj</a></p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Back to top button -->
+    <div class="top-move" id="move-top">
+      <a href="#"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+    <script>
+      // Scroll functions
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+          $('#move-top').addClass('visible');
+        } else {
+          $('#move-top').removeClass('visible');
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Add text-gradient class functionality
+      document.querySelectorAll('.text-gradient').forEach(el => {
+        el.style.background = 'var(--gradient-primary)';
+        el.style.webkitBackgroundClip = 'text';
+        el.style.webkitTextFillColor = 'transparent';
+      });
+
+      // Add border-glass class
+      document.querySelectorAll('.border-glass').forEach(el => {
+        el.style.borderColor = 'var(--glass-border)';
+      });
+
+      // Animation on scroll
+      function checkFade() {
+        const elements = document.querySelectorAll('.fade-in');
+        elements.forEach(el => {
+          const position = el.getBoundingClientRect();
+          if (position.top < window.innerHeight - 100) {
+            el.style.opacity = 1;
+            el.style.transform = 'translateY(0)';
+          }
+        });
+      }
+
+      window.addEventListener('scroll', checkFade);
+      window.addEventListener('load', checkFade);
+    </script>
+  </body>
+</html>
